@@ -1,0 +1,29 @@
+{
+  "development": {
+    "username": "",
+    "password": "",
+    "database": "social-wallet-db",
+    "host": "",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "",
+    "password": null,
+    "database": "",
+    "host": "",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "",
+    "password": "",
+    "database": "social-wallet-db",
+    "host": "",
+    "dialect": "mysql",
+    "logging": false,
+    "dialectOptions": {
+      "ssl": {
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}
