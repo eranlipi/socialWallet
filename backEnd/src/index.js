@@ -19,6 +19,7 @@ const exampleRouter = require("./routes/exampleRouter");
 const authRouter = require("./routes/authRouter");
 const connectionRouter = require('./routes/connectionRouter');
 const thirdPartyAuthRouter = require("./routes/thirdPartyAuthRouter");
+const businessRouter = require("./routes/businessRouter");
 
 app.get("/", (req, res) => {
   res.status(200).send("Server is ok!");
@@ -28,6 +29,7 @@ app.use("/api/example", exampleRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/connection", connectionRouter);
 app.use("/api/auth/third-party", thirdPartyAuthRouter);
+app.use("/api/business", businessRouter);
 
 const port = process.env.PORT || 8000;
 
