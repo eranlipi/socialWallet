@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,7 +13,6 @@ import LogoutIcon from "@material-ui/icons/ExitToApp";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import api from "../../helpers/api";
 import { logout } from "../../auth";
-import { useHistory } from "react-router-dom";
 import { AlertContext } from "../../Routes";
 
 const useStyles = makeStyles((theme) => ({
@@ -104,7 +103,7 @@ export default function Header() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const history = useHistory();
+  const navigate = useNavigate();
   const { setAlertMsg, setAlertType, setAlertOpen } = useContext(AlertContext);
 
   const isMenuOpen = Boolean(anchorEl);
@@ -117,7 +116,7 @@ export default function Header() {
         setAlertType("success");
         setAlertOpen(true);
         logout();
-        history.push("/signin");
+        navigate("/signin");
       } else {
         setAlertMsg(res.msg);
         setAlertType("error");

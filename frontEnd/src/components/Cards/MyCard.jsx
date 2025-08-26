@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   CardHeader,
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 const MyCard = ({ heading, subHeading, url, id }) => {
   const classes = useStyles();
   const { setAlertMsg, setAlertType, setAlertOpen } = useContext(AlertContext);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -69,7 +69,7 @@ const MyCard = ({ heading, subHeading, url, id }) => {
         setAlertType("success");
         setAlertOpen(true);
         logout();
-        history.push("/signin");
+        navigate("/signin");
       } else {
         setAlertMsg(res.msg);
         setAlertType("error");

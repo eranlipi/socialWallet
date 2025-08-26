@@ -1,7 +1,7 @@
 import { CircularProgress, Typography, makeStyles } from "@material-ui/core";
 import React, { useEffect, useContext } from "react";
 import api from "../../helpers/api";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AlertContext } from "../../Routes";
 import { login } from "../../auth";
 
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 function Verify() {
   const classes = useStyles();
   const { setAlertMsg, setAlertType, setAlertOpen } = useContext(AlertContext);
-  const history = useHistory();
+  const navigate = useNavigate();
   const { token } = useParams();
 
   useEffect(() => {
@@ -31,13 +31,13 @@ function Verify() {
         setAlertType("success");
         setAlertOpen(true);
         login(res.data.user);
-        if (res.data.register) history.push("/editProfile");
-        else history.push("/");
+        if (res.data.register) navigate("/editProfile");
+        else navigate("/");
       } else {
         setAlertMsg(res.msg);
         setAlertType("error");
         setAlertOpen(true);
-        history.push("/signin");
+        navigate("/signin");
       }
     });
 

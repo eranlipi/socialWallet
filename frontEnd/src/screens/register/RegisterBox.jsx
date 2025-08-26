@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { makeStyles, Grid } from "@material-ui/core";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -7,7 +7,6 @@ import MyTextField from "../../components/common/MyTextField";
 import gmailLogo from "./../../assets/gmail-logo.svg";
 import api, { urls } from "../../helpers/api";
 import { AlertContext } from "../../Routes";
-import { useHistory } from "react-router-dom";
 import { login } from "../../auth";
 import LocalButton from "../../components/common/LocalButton";
 
@@ -72,7 +71,7 @@ const validationSchema = Yup.object({
 const RegisterBox = () => {
   const classes = useStyles();
   const { setAlertMsg, setAlertType, setAlertOpen } = useContext(AlertContext);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
@@ -95,7 +94,7 @@ const RegisterBox = () => {
           setAlertType("success");
           setAlertOpen(true);
           login(res.data);
-          history.push("/editProfile");
+          navigate("/editProfile");
         } else {
           setAlertMsg(res.msg);
           setAlertType("error");

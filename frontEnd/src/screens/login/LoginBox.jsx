@@ -1,11 +1,10 @@
 import React, { useState, useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { makeStyles, Grid } from "@material-ui/core";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import MyTextField from "../../components/common/MyTextField";
 import gmailLogo from "./../../assets/gmail-logo.svg";
-import { useHistory } from "react-router-dom";
 import { login } from "../../auth";
 import LocalButton from "../../components/common/LocalButton";
 import api, { urls } from "../../helpers/api";
@@ -70,7 +69,7 @@ const validationSchema = Yup.object().shape({
 const LoginBox = () => {
   const classes = useStyles();
   const { setAlertMsg, setAlertType, setAlertOpen } = useContext(AlertContext);
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const [loading, setLoading] = useState(false);
 
@@ -89,9 +88,9 @@ const LoginBox = () => {
           setAlertOpen(true);
           login(res.data);
           if (location && location.state && location.state.from) {
-            history.push(location.state.from);
+            navigate(location.state.from);
           } else {
-            history.push("/");
+            navigate("/");
           }
         } else {
           setAlertMsg(res.msg);
