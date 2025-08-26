@@ -89,6 +89,12 @@ const api = {
         )
       ),
   },
+  business: {
+    uploadLogo: (data) =>
+      ajaxHandler(
+        axios.patch("/api/business/logo", data, { withCredentials: true })
+      ),
+  },
 };
 
 const urls = {

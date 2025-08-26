@@ -1,10 +1,12 @@
 const multer = require('multer');
 
-function handleImageUpload(imageName) {
+// imageName: field name, idField: 'userID' (default) or 'businessID'
+function handleImageUpload(imageName, idField = 'userID') {
     const storage = multer.diskStorage({
-        destination: 'uploads/',
+        destination: idField === 'businessID' ? 'uploads/business/' : 'uploads/',
         filename: function (req, file, callBack) {
-            callBack(null, req.user.userID);
+            const name = idField === 'businessID' ? req.user.businessID : req.user.userID;
+            callBack(null, name);
         }
     });
 
