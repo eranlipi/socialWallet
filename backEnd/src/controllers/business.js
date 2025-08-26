@@ -244,4 +244,26 @@ const signIn = {
   },
 };
 
-module.exports = { signUp, signIn };
+const updateLogo = {
+  security: {
+    authenticationLayer: true,
+    authorizationLayer: false,
+    validationLayer: false,
+  },
+
+  async handler(req, res, next) {
+    try {
+      await sequelize.models.Business.update(
+        { logoURL: `uploads/business/${req.user.businessID}` },
+        { where: { businessID: req.user.businessID } }
+      );
+      next();
+    } catch (e) {
+      res
+        .status(400)
+        .send(responseCreator("error", "Request can't be proceed"));
+    }
+  },
+};
+
+module.exports = { signUp, signIn, updateLogo };
