@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { Switch } from "react-router-dom";
+import { Routes } from "react-router-dom";
 import RouteWrapper from "./components/common/RouteWrapper";
 import Login from "./screens/login";
 import Register from "./screens/register";
@@ -30,35 +30,26 @@ const AppRouter = () => {
         setAlertOpen,
       }}
     >
-      <RouteWrapper
-        protect={true}
-        redirect={false}
-        exact
-        path="*"
-        component={Header}
-      />
+      <Routes>
+        <RouteWrapper protect={true} redirect={false} path="*" component={Header} />
+      </Routes>
       <Wrapper>
-        <Switch>
-          <RouteWrapper exact path="/signin" component={Login} />
-          <RouteWrapper exact path="/signup" component={Register} />
-          <RouteWrapper exact path="/google/verify/:token" component={Verify} />
-          <RouteWrapper protect={true} exact path="/cards" component={Cards} />
+        <Routes>
+          <RouteWrapper path="/signin" component={Login} />
+          <RouteWrapper path="/signup" component={Register} />
+          <RouteWrapper path="/google/verify/:token" component={Verify} />
+          <RouteWrapper protect={true} path="/cards" component={Cards} />
           <RouteWrapper
             protect={true}
-            exact
             path="/editProfile"
             component={Account}
           />
-          <RouteWrapper protect={true} exact path="/" component={Home} />
-        </Switch>
+          <RouteWrapper protect={true} path="/" component={Home} />
+        </Routes>
       </Wrapper>
-      <RouteWrapper
-        protect={true}
-        redirect={false}
-        exact
-        path="*"
-        component={Footer}
-      />
+      <Routes>
+        <RouteWrapper protect={true} redirect={false} path="*" component={Footer} />
+      </Routes>
       <Alert />
     </AlertContext.Provider>
   );

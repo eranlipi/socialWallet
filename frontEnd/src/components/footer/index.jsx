@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import MoreIcon from "@material-ui/icons/MoreVert";
 
 const useStyles = makeStyles((theme) => ({
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Footer = () => {
   const classes = useStyles();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -92,10 +92,10 @@ const Footer = () => {
             Copyright (C) 2021 csbrains.com
           </Typography>
           <div className={classes.sectionDesktop}>
-            <Button onClick={() => history.push("/")} color="inherit">
+            <Button onClick={() => navigate("/")} color="inherit">
               Home
             </Button>
-            <Button onClick={() => history.push("/cards")} color="inherit">
+            <Button onClick={() => navigate("/cards")} color="inherit">
               Cards
             </Button>
           </div>

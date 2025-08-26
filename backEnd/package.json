@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests yet\""
   },
   "repository": {
     "type": "git",
@@ -18,24 +18,27 @@
   },
   "homepage": "https://github.com/IRIS-LABS/social-wallat-app-back-end#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcrypt": "^5.1.1",
     "cls-hooked": "^4.2.2",
-    "config": "^3.3.6",
+    "config": "^3.3.9",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "joi": "^17.5.0",
-    "joi-password-complexity": "^5.1.0",
-    "jsonwebtoken": "^8.5.1",
-    "multer": "^1.4.4",
-    "mysql2": "^2.3.3",
-    "nodemon": "^2.0.15",
-    "passport": "^0.5.0",
+    "express": "^4.18.2",
+    "joi": "^17.9.2",
+    "joi-password-complexity": "^5.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.9.2",
+    "nodemon": "^3.0.2",
+    "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
-    "sequelize": "^6.12.0-beta.3",
-    "uuid": "^8.3.2"
+    "sequelize": "^6.37.1",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.3.0"
+    "sequelize-cli": "^6.6.2"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
