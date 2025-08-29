@@ -35,7 +35,7 @@ const BusinessLogoUploader = ({ open, onClose }) => {
   };
 
   return (
-    <Modal open={open}>
+    <Modal open={open} onClose={onClose}>
       <Box style={{ position: 'absolute', top: '20%', left: '40%' }}>
         <MyAvatarUploader
           onClose={onClose}

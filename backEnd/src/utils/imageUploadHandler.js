@@ -21,7 +21,14 @@ function handleImageUpload(imageName, idField = 'userID') {
             else
                 res
                     .status(200)
-                    .send(responseCreator("success", "Successfully updated profile image"));
+                    .send(
+                        responseCreator(
+                            "success",
+                            idField === 'businessID'
+                                ? "Successfully updated business logo"
+                                : "Successfully updated profile image"
+                        )
+                    );
         })
     }
 }
