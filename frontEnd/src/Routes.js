@@ -3,6 +3,9 @@ import { Routes } from "react-router-dom";
 import RouteWrapper from "./components/common/RouteWrapper";
 import Login from "./screens/login";
 import Register from "./screens/register";
+import BusinessLogin from "./screens/businessLogin";
+import BusinessRegister from "./screens/businessRegister";
+import Wallet from "./screens/wallet";
 import Cards from "./screens/cards";
 import Home from "./screens/home";
 import Account from "./screens/account";
@@ -37,8 +40,11 @@ const AppRouter = () => {
         <Routes>
           <RouteWrapper path="/signin" component={Login} />
           <RouteWrapper path="/signup" component={Register} />
+          <RouteWrapper path="/business/signin" component={BusinessLogin} />
+          <RouteWrapper path="/business/signup" component={BusinessRegister} />
           <RouteWrapper path="/google/verify/:token" component={Verify} />
           <RouteWrapper protect={true} path="/cards" component={Cards} />
+          <RouteWrapper protect={true} path="/wallet" component={Wallet} />
           <RouteWrapper
             protect={true}
             path="/editProfile"

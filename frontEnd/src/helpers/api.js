@@ -90,9 +90,35 @@ const api = {
       ),
   },
   business: {
+    register: (data) =>
+      ajaxHandler(
+        axios.post("/api/business/sign-up", data, { withCredentials: true })
+      ),
+    login: (data) =>
+      ajaxHandler(
+        axios.post("/api/business/sign-in", data, { withCredentials: true })
+      ),
     uploadLogo: (data) =>
       ajaxHandler(
         axios.patch("/api/business/logo", data, { withCredentials: true })
+      ),
+  },
+  wallet: {
+    getCards: () =>
+      ajaxHandler(
+        axios.get("/api/wallet/cards", { withCredentials: true })
+      ),
+    addCard: (data) =>
+      ajaxHandler(
+        axios.post("/api/wallet/cards", data, { withCredentials: true })
+      ),
+    updateCard: (id, data) =>
+      ajaxHandler(
+        axios.put(`/api/wallet/cards/${id}`, data, { withCredentials: true })
+      ),
+    removeCard: (id) =>
+      ajaxHandler(
+        axios.delete(`/api/wallet/cards/${id}`, { withCredentials: true })
       ),
   },
 };
